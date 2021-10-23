@@ -1,9 +1,20 @@
-const directionMap = {
-  // [L, R]
-  N: ["W", "E"],
-  E: ["N", "S"],
-  S: ["E", "W"],
-  W: ["S", "N"],
+let mappedDirections = {
+  N: {
+    L: "W",
+    R: "E",
+  },
+  E: {
+    L: "N",
+    R: "S",
+  },
+  W: {
+    L: "S",
+    R: "N",
+  },
+  S: {
+    L: "E",
+    R: "W",
+  },
 };
 
 export const processInputs = (inputs) => {
@@ -23,28 +34,21 @@ export const processInputs = (inputs) => {
 };
 
 export const moveforward = (curCoords, curDirection) => {
-  const x = Number(curCoords[0]);
-  const y = Number(curCoords[1]);
+  const [x, y] = curCoords;
   switch (curDirection) {
     case "N":
-      return [x, y + 1];
+      return [x, Number(y) + 1];
     case "E":
-      return [x + 1, y];
+      return [Number(x) + 1, y];
     case "S":
-      return [x, y - 1];
+      return [x, Number(y) - 1];
     case "W":
-      return [x - 1, y];
+      return [Number(x) - 1, y];
     default:
       return curCoords;
   }
 };
 
-export const turnLeft = (curDirection) => {
-  const activeDirectionMap = directionMap[curDirection];
-  return activeDirectionMap[0];
-};
-
-export const turnRight = (curDirection) => {
-  const activeDirectionMap = directionMap[curDirection];
-  return activeDirectionMap[1];
+export const turnRover = (curDirection, command) => {
+  return mappedDirections[curDirection][command];
 };

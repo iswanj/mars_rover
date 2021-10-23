@@ -1,10 +1,5 @@
 import prompt from "prompt";
-import {
-  moveforward,
-  turnLeft,
-  turnRight,
-  processInputs,
-} from "./RoverPosition.js";
+import { moveforward, turnRover, processInputs } from "./RoverPosition.js";
 
 const schema = {
   properties: {
@@ -42,19 +37,13 @@ prompt.get(schema, function (err, result) {
   const { navInstructions } = processedInputs;
 
   navInstructions.forEach((command) => {
-    switch (command) {
-      case "L":
-        currentDirection = turnLeft(currentDirection);
-        break;
-      case "R":
-        currentDirection = turnRight(currentDirection);
-        break;
-      case "M":
-        currentLandingCoords = moveforward(
-          currentLandingCoords,
-          currentDirection
-        );
-        break;
+    if (command === "M") {
+      currentLandingCoords = moveforward(
+        currentLandingCoords,
+        currentDirection
+      );
+    } else {
+      currentDirection = turnRover(currentDirection, command);
     }
   });
 
