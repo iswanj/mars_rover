@@ -34,16 +34,16 @@ export const processInputs = (inputs) => {
 };
 
 export const moveforward = (curCoords, curDirection) => {
-  const [x, y] = curCoords;
+  const [x, y] = curCoords.map(Number);
   switch (curDirection) {
     case "N":
-      return [x, Number(y) + 1];
+      return [x, y + 1];
     case "E":
-      return [Number(x) + 1, y];
+      return [x + 1, y];
     case "S":
-      return [x, Number(y) - 1];
+      return [x, y - 1];
     case "W":
-      return [Number(x) - 1, y];
+      return [x - 1, y];
     default:
       return curCoords;
   }
