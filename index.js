@@ -1,26 +1,3 @@
-// const readline = require("readline");
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// });
-
-// let plateau = [];
-
-// rl.question("Enter upper-right coordinates of the plateau", function (config) {
-//   rl.question(
-//     "Landing co-ordinates for the Rover",
-//     function (country) {
-//       console.log(`${name}, is a citizen of ${country}`);
-//       rl.close();
-//     }
-//   );
-// });
-
-// rl.on("close", function () {
-//   console.log("\nBYE BYE !!!");
-//   process.exit(0);
-// });
-
 import prompt from "prompt";
 import {
   moveforward,
