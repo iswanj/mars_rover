@@ -1,0 +1,14 @@
+{
+  "name": "mars_rover",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "prompt": "^1.2.0",
+    "readline": "^1.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}
