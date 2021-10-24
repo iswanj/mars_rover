@@ -1,4 +1,4 @@
-let mappedDirections = {
+export const mappedDirections = {
   N: {
     L: "W",
     R: "E",
