@@ -24,7 +24,7 @@ const schema = {
 prompt.start();
 
 //
-// Get two properties from the user: email, password
+// Get two properties from the user: plateau config, rover landing coordinates and navigation instruction
 //
 prompt.get(schema, function (err, result) {
   if (err) {
@@ -34,14 +34,20 @@ prompt.get(schema, function (err, result) {
   const processedInputs = processInputs(result);
 
   let { currentDirection, currentLandingCoords } = processedInputs;
-  const { navInstructions } = processedInputs;
+  const { plateauConfig: [px, py], navInstructions } = processedInputs;
 
+  // perform navigation instuction to move the rover on plateau
   navInstructions.forEach((command) => {
     if (command === "M") {
       currentLandingCoords = moveforward(
         currentLandingCoords,
         currentDirection
       );
+      const [cx, cy] = currentLandingCoords;
+      if (cx > px || cy > py) {
+        console.log("Invalid rover movement commands");
+        break;
+      }
     } else {
       currentDirection = turnRover(currentDirection, command);
     }

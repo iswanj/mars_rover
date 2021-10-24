@@ -20,7 +20,7 @@ export const mappedDirections = {
 export const processInputs = (inputs) => {
   const { plateau, landingCoordinates, navigationInstructions } = inputs;
 
-  const plateauConfig = plateau.split(" ");
+  const plateauConfig = plateau.split(" ").map(Number);
   const landCoords = landingCoordinates.split(" ");
   const navInstructions = navigationInstructions.split("");
 

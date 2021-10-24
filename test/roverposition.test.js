@@ -36,7 +36,7 @@ test("process input should return correct data objects", async () => {
 
   const expectedResult = {
     currentDirection: "E",
-    plateauConfig: ["5", "5"],
+    plateauConfig: [5, 5],
     navInstructions: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"],
     currentLandingCoords: ["3", "3"],
   };
