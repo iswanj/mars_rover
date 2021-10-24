@@ -33,27 +33,35 @@ prompt.get(schema, function (err, result) {
 
   const BreakException = {};
 
+  // process inputs for all the calculations
   const processedInputs = processInputs(result);
 
   let { currentDirection, currentLandingCoords } = processedInputs;
   const {
-    plateauConfig: [px, py],
-    navInstructions,
+    plateauConfig: [px, py], //plateau upper right corner x and y
+    navInstructions, // navigation instuctions converted to an array
   } = processedInputs;
 
   // perform navigation instuction to move the rover on plateau
   navInstructions.forEach((command) => {
     if (command === "M") {
+      //if command is Move
+      // get next rover coordinates
       currentLandingCoords = moveforward(
         currentLandingCoords,
         currentDirection
       );
-      const [cx, cy] = currentLandingCoords;
+      const [cx, cy] = currentLandingCoords; // next coordinates's x and y
       if (cx > px || cy > py) {
+        // if next x axis greater than plateau max x
+        // or if next y axis greater than plateau max y
+        // will throw a error
         console.log("Invalid movement commands for rover on plateau");
         throw BreakException;
       }
     } else {
+      // if command L or R
+      // get next rover facing direction
       currentDirection = turnRover(currentDirection, command);
     }
   });
