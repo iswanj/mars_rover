@@ -40,6 +40,7 @@ prompt.get(schema, function (err, result) {
   const {
     plateauConfig: [px, py], //plateau upper right corner x and y
     navInstructions, // navigation instuctions converted to an array
+    roverName,
   } = processedInputs;
 
   // perform navigation instuction to move the rover on plateau
@@ -66,8 +67,9 @@ prompt.get(schema, function (err, result) {
     }
   });
 
+  console.log("Current position");
   console.log(
-    "Rover Current Position: ",
+    `${roverName}:`,
     currentLandingCoords.join(" ") + " " + currentDirection
   );
 });

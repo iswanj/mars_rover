@@ -29,9 +29,9 @@ test("mappedDirections variable", async () => {
 
 test("process input should return correct data objects", async () => {
   const inputs = {
-    plateau: "5 5",
-    landingCoordinates: "3 3 E",
-    navigationInstructions: "MMRMMRMRRM",
+    plateau: "Plateau:5 5",
+    landingCoordinates: "Rover1 Landing:3 3 E",
+    navigationInstructions: "Rover1 Instructions:MMRMMRMRRM",
   };
 
   const expectedResult = {
@@ -39,6 +39,7 @@ test("process input should return correct data objects", async () => {
     plateauConfig: [5, 5],
     navInstructions: ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"],
     currentLandingCoords: ["3", "3"],
+    roverName: "Rover1",
   };
   expect(processInputs(inputs)).toStrictEqual(expectedResult);
 });

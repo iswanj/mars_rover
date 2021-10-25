@@ -20,9 +20,11 @@ export const mappedDirections = {
 export const processInputs = (inputs) => {
   const { plateau, landingCoordinates, navigationInstructions } = inputs;
 
-  const plateauConfig = plateau.split(" ").map(Number);
-  const landCoords = landingCoordinates.split(" ");
-  const navInstructions = navigationInstructions.split("");
+  const roverName = landingCoordinates.split(" ")[0];
+
+  const plateauConfig = plateau.split(":")[1].split(" ").map(Number);
+  const landCoords = landingCoordinates.split(":")[1].split(" ");
+  const navInstructions = navigationInstructions.split(":")[1].split("");
 
   let currentDirection = landCoords[2];
   return {
@@ -30,6 +32,7 @@ export const processInputs = (inputs) => {
     plateauConfig,
     navInstructions,
     currentLandingCoords: landCoords.slice(0, -1),
+    roverName,
   };
 };
 
